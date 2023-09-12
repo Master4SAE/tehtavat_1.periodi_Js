@@ -1,16 +1,54 @@
 'use strict'
-// Write a program that allows users to track and rate their favorite movies.
-//The program should prompt the user to enter the details of each movie,
-//including the title and rating on a scale of 1 to 5.
-//The program should store the user input in an array of objects using object literals.
-//Once all the movie ratings have been entered,
-//the program should sort the movies based on their ratings and determine the highest-rated movie.
-//Finally, it should display the sorted list of movies and the highest-rated movie on the HTML document.
 
-// Use object literals to represent each movie, with properties such as title and rating.
-// Prompt the user to enter the number of movies they want to rate.
-// Use a loop to gather user input for each movie, including the title and rating. Store the movie details in an array of objects.
-// Sort the array of movie objects based on the ratings, from highest to lowest.
-// Determine the highest-rated movie by accessing the first element of the sorted array.
-// Display the sorted list of movies and the highest-rated movie on the HTML document.
-// 6p
+
+//Finally, it should display the sorted list of movies and the highest-rated movie on the HTML document
+const movieList = [];
+
+const howMany = parseFloat(prompt("Enter how many movies to  rate"));
+let counter = 1;
+while (counter <= howMany){
+
+  alert("enter the name and rating of each movie. Ratings on a scale of 1 to 5.");
+
+  const movieName = prompt("Enter movie name");
+  const movieRating = parseFloat(prompt("Enter rating on scale 1 to 5."));
+
+  const movieDetails = {
+    name: movieName,
+    rating: movieRating
+  };
+
+  movieList.push(movieDetails);
+
+  counter = counter +1;
+}
+const sortedList = movieList.sort((a, b) => b.rating - a.rating);
+
+console.log(sortedList);
+
+console.log(sortedList[0]);
+
+document.querySelector('#target').innerHTML = 'Title: ' + sortedList[0].name + ' Rating: ' + sortedList[0].rating
+
+
+
+const targetElement = document.querySelector('#target1');
+
+if (sortedList.length > 0) {
+  let htmlContent = '<ul>';
+  sortedList.forEach(movie => {
+    htmlContent += `<li>Title: ${movie.name}, Rating: ${movie.rating}</li>`;
+  });
+  htmlContent += '</ul>';
+  targetElement.innerHTML = htmlContent;
+} else {
+  targetElement.innerHTML = 'No movies to display.';
+}
+
+
+
+
+
+
+
+
