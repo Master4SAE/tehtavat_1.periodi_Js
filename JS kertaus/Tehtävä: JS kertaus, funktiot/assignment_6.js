@@ -1,7 +1,5 @@
 'use strict'
 
-
-//Finally, it should display the sorted list of movies and the highest-rated movie on the HTML document
 const movieList = [];
 
 const howMany = parseFloat(prompt("Enter how many movies to  rate"));
@@ -44,6 +42,7 @@ if (sortedList.length > 0) {
 } else {
   targetElement.innerHTML = 'No movies to display.';
 }
+
 
 
 
