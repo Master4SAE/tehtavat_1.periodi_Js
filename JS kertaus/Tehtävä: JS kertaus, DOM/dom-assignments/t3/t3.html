@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Assignment 3</h1>
+  <div id="target">print data here</div>
+  <script>
+    const time = new Date();
+    const result = navigator.userAgent;
+
+    const browserPatterns = {
+      Chrome: /Chrome\/(\S+)/,
+      Firefox: /Firefox\/(\S+)/,
+      Edge: /Edg\/(\S+)/,
+      Safari: /Version\/(\S+).*Safari/,
+      Opera: /OPR\/(\S+)/,
+    };
+
+    let browserName = "Unknown";
+    let browserVersion = "Unknown";
+    let systemName = navigator.platform;
+    let width = screen.width;
+    let height = screen.height;
+
+// Iterate through the patterns and check if the user agent string matches
+for (const [browser, pattern] of Object.entries(browserPatterns)) {
+  const match = result.match(pattern);
+  if (match) {
+    browserName = browser;
+    browserVersion = match[1];
+    break;
+  }
+}
+
+    document.getElementById("target").innerHTML = "Browser Name: " + browserName + " <br>Version: " + browserVersion + "<br> Opertiong system name: " + systemName + "<br> Screen width:" + width + " and height:" + height + "<br>Available screen space for the browser: " + screen.availHeight + "<br>Current date and time: " + time.getDate().toLocaleString("fi-FI") +". " + time.toLocaleString("fi-FI", { month: "long"})+ " " + time.getFullYear() + " " + time.getHours().toLocaleString("fi-FI") + ":" +  time.getMinutes().toLocaleString("fi-FI")
+
+
+  </script>
+
+</body>
+
+</html>
