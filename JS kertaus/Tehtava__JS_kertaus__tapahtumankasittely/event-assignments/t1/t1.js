@@ -1,3 +1,4 @@
+'use strict';
 // array for todo list
 const todoList = [
   {
@@ -30,15 +31,15 @@ const todoList = [
 // add your code here
 const ul = document.querySelector("ul");
 
-function dolist(){
+function dolist() {
   ul.innerHTML = '';
 
 todoList.forEach(item => {
 
-    var li = document.createElement("li")
-    var input = document.createElement("input");
-    var lable = document.createElement("label");
-    var button = document.createElement("button");
+    const li = document.createElement("li")
+    const input = document.createElement("input");
+    const lable = document.createElement("label");
+    const button = document.createElement("button");
 
     input.setAttribute("id", item.id);
     input.setAttribute("type", "checkbox");
@@ -79,28 +80,31 @@ todoList.forEach(item => {
 
 dolist();
 
-
+const addBtn = document.querySelector('#add');
 const dialog = document.querySelector("dialog");
-const btn = document.querySelector('.add-btn');
+const form = document.querySelector('form');
 
-  btn.addEventListener('click', function() {
+  addBtn.addEventListener('click', function() {
     dialog.showModal();
    });
 
-   const btn2 = document.querySelector('.save-btn');
-   btn2.addEventListener('click', function() {
-    var newItemName = document.getElementById("toDoItem").value;
+
+   form.addEventListener('submit', function(evt) {
+    evt.preventDefault();
+
+    const newItemName = document.querySelector("dialog input").value;
 
     const newItem = {
       id: todoList.length + 1,
       task: newItemName,
       completed: false,
     };
+
     todoList.push(newItem)
+    dolist();
 
     dialog.close();
 
-    dolist();
 
   });
 
