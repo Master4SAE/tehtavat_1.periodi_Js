@@ -24,3 +24,16 @@ td {
   border-bottom: 1px solid #ccc;
   padding: 0.5em 1em;
 }
+
+.highlight{
+  background-color: wheat;
+  font-weight: bold;
+}
+dialog{
+  height: 20vh;
+}
+
+dialog button{
+  height: 20px;
+  width: auto;
+}
